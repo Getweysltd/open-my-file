@@ -52,7 +52,7 @@ const content = {
     languageLabel: "Switch to Arabic",
     announcement: "One device. Your whole home, understood.",
     announcementLink: "See how it works",
-    productLabel: "Queed Home Energy",
+    productLabel: "Queed Home ",
     heroTitle: <>Your electricity bill<br />has been a black box.<br /><em>Queed opens it.</em></>,
     heroBody: "The Queed Meter is a smart, AI-powered energy device that shows exactly what is running up your electricity bill — down to the appliance — so you can cut it by up to 26%.",
     getQueed: "Get Queed",
