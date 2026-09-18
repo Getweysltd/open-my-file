@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConsumerRouteImport } from './routes/consumer'
+import { Route as DistributorRouteImport } from './routes/distributor'
+import { Route as InstallerRouteImport } from './routes/installer'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsumerRoute = ConsumerRouteImport.update({
+  id: '/consumer',
+  path: '/consumer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DistributorRoute = DistributorRouteImport.update({
+  id: '/distributor',
+  path: '/distributor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstallerRoute = InstallerRouteImport.update({
+  id: '/installer',
+  path: '/installer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/consumer': typeof ConsumerRoute
+  '/distributor': typeof DistributorRoute
+  '/installer': typeof InstallerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/consumer': typeof ConsumerRoute
+  '/distributor': typeof DistributorRoute
+  '/installer': typeof InstallerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/consumer': typeof ConsumerRoute
+  '/distributor': typeof DistributorRoute
+  '/installer': typeof InstallerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/consumer' | '/distributor' | '/installer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/consumer' | '/distributor' | '/installer'
+  id: '__root__' | '/' | '/consumer' | '/distributor' | '/installer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConsumerRoute: typeof ConsumerRoute
+  DistributorRoute: typeof DistributorRoute
+  InstallerRoute: typeof InstallerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consumer': {
+      id: '/consumer'
+      path: '/consumer'
+      fullPath: '/consumer'
+      preLoaderRoute: typeof ConsumerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/distributor': {
+      id: '/distributor'
+      path: '/distributor'
+      fullPath: '/distributor'
+      preLoaderRoute: typeof DistributorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/installer': {
+      id: '/installer'
+      path: '/installer'
+      fullPath: '/installer'
+      preLoaderRoute: typeof InstallerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConsumerRoute: ConsumerRoute,
+  DistributorRoute: DistributorRoute,
+  InstallerRoute: InstallerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
