@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Activity,
   ArrowRight,
@@ -42,10 +42,10 @@ type Language = "en" | "ar";
 const content = {
   en: {
     nav: [
-      ["What is Queed", "#what-it-is"],
+      ["Consumers", "/consumer"],
+      ["Installers", "/installer"],
+      ["Distributors", "/distributor"],
       ["How it works", "#how-it-works"],
-      ["Benefits", "#benefits"],
-      ["Ask Kahrabai", "#kahrabai"],
     ],
     navLabel: "Main navigation",
     menuLabel: "Toggle navigation",
@@ -54,19 +54,19 @@ const content = {
     announcementLink: "See how it works",
     productLabel: "Queed Home Energy",
     heroTitle: <>Your electricity bill<br />has been a black box.<br /><em>Queed opens it.</em></>,
-    heroBody: "Queed is a smart meter and AI energy app that shows exactly what is running up your electricity bill — down to the appliance — so you can cut it by up to 26%.",
+    heroBody: "The Queed Meter is a smart, AI-powered energy device that shows exactly what is running up your electricity bill — down to the appliance — so you can cut it by up to 26%.",
     getQueed: "Get Queed",
     seeHow: "See how it works",
     whatKicker: "What it is",
     whatTitle: <>One device.<br />A complete picture.</>,
-    whatBody: "Queed is a smart energy monitor that connects to your home's electricity supply and tells you, in real time, exactly how much power you're using and what's using it.",
-    whatCompare: "Unlike a standard electricity meter that only shows one number once a month, Queed gives you continuous, appliance-level visibility powered by an AI assistant that learns your home's unique electrical signature.",
-    whatStatement: "No sensors on every appliance. No guesswork. One device, installed once, watching everything.",
+    whatBody: "Changing how you use energy starts with data. Queed helps households cut electricity waste and carbon emissions by putting real-time, appliance-level intelligence directly in your hands.",
+    whatCompare: "The Queed Meter connects to your home's electricity supply and tells you exactly how much power you're using and what is using it. Kahrabai, Queed's AI assistant, learns your home's unique electrical signature.",
+    whatStatement: "Continuous insight, clear actions, and a smarter way to use energy — all from one Queed Meter.",
     stepsKicker: "How it works",
     stepsTitle: <>From one signal<br />to a clear answer.</>,
     steps: [
-      ["Install", "A licensed electrician wires Queed into your home's meter or distribution panel — a single, one-time install."],
-      ["Learn", "Queed's AI reads your home's electrical signal and recognizes appliances by their unique power signature. No manual setup required."],
+      ["Install", "A licensed electrician wires the Queed Meter into your home's meter or distribution panel — a single, one-time install."],
+      ["Learn", "The Queed Meter's AI reads your home's electrical signal and recognizes appliances by their unique power signature. No manual setup required."],
       ["See", "Open the app for live appliance-by-appliance consumption, daily and monthly trends, and clear next steps to lower your bill."],
     ],
     monitoringKicker: "Continuous monitoring",
@@ -82,10 +82,10 @@ const content = {
     benefitsKicker: "What you get",
     benefitsTitle: <>Less uncertainty.<br />More control.</>,
     benefits: [
-      ["Lower bills", "Queed users see an average reduction of up to 26% on their monthly electricity bill."],
+      ["Lower bills", "Queed users can reduce their monthly electricity bill by up to 26%."],
       ["No more guessing", "Know exactly which appliance is driving usage instead of guessing between the AC, fridge, or water heater."],
       ["Peace of mind", "Catch a failing or inefficient appliance early, before it appears as a surprise on your bill."],
-      ["One simple install", "A single device covers your whole home. No sensors to install or maintain on every appliance."],
+      ["One simple install", "A single Queed Meter covers your whole home, with no sensors to maintain on every appliance."],
       ["Clear guidance", "Get specific actions in plain language, ranked by how much they can actually save you."],
     ],
     kahrabaiKicker: "Ask Kahrabai",
@@ -96,14 +96,22 @@ const content = {
     faqKicker: "Understand the essentials",
     faqTitle: "Related topics.",
     faqs: [
-      ["What is a smart meter?", "A smart meter measures your home's electricity use and communicates that data digitally. Unlike a traditional meter, it does not need to be read manually."],
-      ["How do smart meters work?", "A smart meter measures the electrical current flowing into your home and sends that data continuously — in Queed's case, directly to your app."],
-      ["What is a watt, and why does it matter?", "A watt is a unit of power: how much energy something uses at a given moment. Your bill is based on watts used over time, measured in kilowatt-hours."],
-      ["Smart meter or energy monitor — what's the difference?", "A smart meter typically reports total usage. An energy monitor like Queed goes further by breaking that total down by appliance and turning it into actionable insight."],
+      ["What is a Queed Meter?", "The Queed Meter measures your electricity use and, paired with Kahrabai AI, turns it into plain-language insight: what is running, what it costs, and what to do about it."],
+      ["How does the Queed Meter work?", "Installed once on your home's electrical supply, it continuously reads current and streams data to your app. Kahrabai then separates that signal appliance by appliance."],
+      ["What is a watt, and how does Queed use it?", "A watt measures how much power something draws at a given moment. Queed reads the watts behind your bill continuously and shows which appliances are worth cutting back."],
+      ["Queed Meter vs. a standard smart meter?", "A standard meter reports total usage. The Queed Meter breaks it down by appliance and turns it into clear, real-time guidance."],
     ],
     closeKicker: "Every watt, understood",
     closeTitle: <>Take control<br />of your energy.</>,
     closeBody: "One smart meter. One intelligent app. A clear path to a more efficient home.",
+    rewardsKicker: "How Queed rewards you",
+    rewardsTitle: "Save. Earn. Redeem. Gift.",
+    rewardsBody: "Every unit you save converts into reward points that build automatically in your account. Redeem them for real benefits or gift them to family and friends.",
+    rewardsLink: "Explore consumer rewards",
+    installerKicker: "Installer cashback",
+    installerTitle: "Install. Submit. Get Cashback.",
+    installerBody: "Install the Queed Meter, share a clear installation photo and serial number through Queed's official WhatsApp Business, and receive cashback once verified.",
+    installerLink: "Join the installer network",
     footer: "Smart energy management for Saudi homes.",
     source: "Product information provided by Queed",
     copyright: "© 2026 Queed",
@@ -172,6 +180,14 @@ const content = {
     closeKicker: "كل واط أصبح مفهومًا",
     closeTitle: <>تحكّم في<br />طاقة منزلك.</>,
     closeBody: "عداد ذكي واحد. تطبيق ذكي واحد. طريق واضح نحو منزل أكثر كفاءة.",
+    rewardsKicker: "مكافآت كيد",
+    rewardsTitle: "وفّر. اكسب. استبدل. أهدِ.",
+    rewardsBody: "يتحول كل توفير تحققه إلى نقاط مكافآت تتراكم تلقائيًا في حسابك.",
+    rewardsLink: "اكتشف مكافآت المستهلكين",
+    installerKicker: "استرداد نقدي للمركّبين",
+    installerTitle: "ركّب. أرسل. احصل على المكافأة.",
+    installerBody: "ركّب عداد كيد وأرسل صورة التركيب والرقم التسلسلي ليتم التحقق وصرف المكافأة.",
+    installerLink: "انضم إلى شبكة المركّبين",
     footer: "إدارة ذكية للطاقة في المنازل السعودية.",
     source: "معلومات المنتج مقدمة من كيد",
     copyright: "© 2026 كيد",
@@ -204,14 +220,14 @@ function QueedPage() {
   return (
     <main id="overview" className="site-shell" dir={isArabic ? "rtl" : "ltr"} lang={language}>
       <nav className="global-nav" aria-label={copy.navLabel}>
-        <a className="wordmark" href="#overview" aria-label="Queed home">Queed</a>
-        <div className="nav-links">{copy.nav.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
+        <Link className="wordmark" to="/" aria-label="Queed home">Queed</Link>
+        <div className="nav-links">{copy.nav.map(([label, href]) => href.startsWith("/") ? <Link key={href} to={href as "/consumer" | "/installer" | "/distributor"}>{label}</Link> : <a key={href} href={href}>{label}</a>)}</div>
         <div className="nav-tools">
           <Button variant="ghost" size="sm" className="language-switch" onClick={switchLanguage} aria-label={copy.languageLabel}>{isArabic ? "EN" : "العربية"}</Button>
           <Button variant="ghost" size="icon" className="nav-menu" onClick={() => setMenuOpen((open) => !open)} aria-label={copy.menuLabel}>{menuOpen ? <X /> : <Menu />}</Button>
         </div>
       </nav>
-      {menuOpen && <div className="mobile-menu">{copy.nav.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>}
+      {menuOpen && <div className="mobile-menu">{copy.nav.map(([label, href]) => href.startsWith("/") ? <Link key={href} to={href as "/consumer" | "/installer" | "/distributor"} onClick={() => setMenuOpen(false)}>{label}</Link> : <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div>}
 
       <div className="announcement">{copy.announcement} <a href="#how-it-works">{copy.announcementLink} <ChevronRight /></a></div>
 
@@ -251,6 +267,11 @@ function QueedPage() {
         <div className="benefits-grid">{copy.benefits.map(([title, body], index) => { const Icon = benefitIcons[index]!; return <article key={title}><Icon /><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>; })}</div>
       </section>
 
+      {!isArabic && <section className="journey-band">
+        <Link to="/consumer" className="journey-panel"><span>{copy.rewardsKicker}</span><h2>{copy.rewardsTitle}</h2><p>{copy.rewardsBody}</p><strong>{copy.rewardsLink} <ArrowRight /></strong></Link>
+        <Link to="/installer" className="journey-panel journey-panel-dark"><span>{copy.installerKicker}</span><h2>{copy.installerTitle}</h2><p>{copy.installerBody}</p><strong>{copy.installerLink} <ArrowRight /></strong></Link>
+      </section>}
+
       <section id="kahrabai" className="kahrabai-section">
         <div className="kahrabai-copy"><p className="section-kicker">{copy.kahrabaiKicker}</p><h2>{copy.kahrabaiTitle}</h2><p>{copy.kahrabaiBody}</p><a className="primary-pill" href="https://queed.sa/">{copy.ask} <ArrowRight /></a></div>
         <div className="prompt-stack" aria-label={copy.kahrabaiKicker}><div className="assistant-mark"><Sparkles /><span>Kahrabai AI</span></div>{copy.prompts.map((prompt, index) => <div className="prompt" key={prompt}><span>{prompt}</span>{index === 0 && <strong>{isArabic ? "وجد كيد الإجابة" : "Queed found the answer"}</strong>}</div>)}</div>
@@ -263,7 +284,7 @@ function QueedPage() {
 
       <section className="closing-cta"><img src={queedProduct} alt={isArabic ? "جهاز كيد الذكي" : "Queed smart electricity monitor"} loading="lazy" width={768} height={1152} /><div><p className="section-kicker">{copy.closeKicker}</p><h2>{copy.closeTitle}</h2><p>{copy.closeBody}</p><a className="primary-pill" href="https://queed.sa/">{copy.getQueed} <ArrowRight /></a></div></section>
 
-      <footer><div><a className="wordmark" href="#overview">Queed</a><p>{copy.footer}</p></div><div className="footer-bottom"><span>{copy.source}</span><span>{copy.copyright}</span></div></footer>
+      <footer><div><Link className="wordmark" to="/">Queed</Link><p>{copy.footer}</p></div><div className="footer-bottom"><span>{copy.source}</span><span>{copy.copyright}</span></div></footer>
     </main>
   );
 }
