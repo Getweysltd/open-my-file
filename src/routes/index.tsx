@@ -242,13 +242,13 @@ function QueedPage() {
       </section>
 
       <section className="monitoring-band">
-        <div className="monitor-copy"><p className="section-kicker">{copy.monitoringKicker}</p><h2>{copy.monitoringTitle}</h2><p>{copy.monitoringBody}</p><div className="monitor-list">{copy.monitoring.map(([title, body], index) => { const Icon = monitorIcons[index]; return <article key={title}><Icon /><div><h3>{title}</h3><p>{body}</p></div></article>; })}</div></div>
+        <div className="monitor-copy"><p className="section-kicker">{copy.monitoringKicker}</p><h2>{copy.monitoringTitle}</h2><p>{copy.monitoringBody}</p><div className="monitor-list">{copy.monitoring.map(([title, body], index) => { const Icon = monitorIcons[index]!; return <article key={title}><Icon /><div><h3>{title}</h3><p>{body}</p></div></article>; })}</div></div>
         <div className="live-dashboard" aria-label={copy.liveNow}><div className="live-status"><span>{copy.liveNow}</span><i /></div><strong>14.05 <small>kW</small></strong><div className="energy-bars" aria-hidden="true">{Array.from({ length: 12 }, (_, index) => <b key={index} />)}</div><div className="device-reading"><span>AC</span><strong>5.8 kW</strong></div><div className="device-reading"><span>{isArabic ? "سخان المياه" : "Water heater"}</span><strong>3.2 kW</strong></div></div>
       </section>
 
       <section id="benefits" className="content-section benefits-section">
         <div className="section-heading"><p className="section-kicker">{copy.benefitsKicker}</p><h2>{copy.benefitsTitle}</h2></div>
-        <div className="benefits-grid">{copy.benefits.map(([title, body], index) => { const Icon = benefitIcons[index]; return <article key={title}><Icon /><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>; })}</div>
+        <div className="benefits-grid">{copy.benefits.map(([title, body], index) => { const Icon = benefitIcons[index]!; return <article key={title}><Icon /><span>0{index + 1}</span><h3>{title}</h3><p>{body}</p></article>; })}</div>
       </section>
 
       <section id="kahrabai" className="kahrabai-section">
